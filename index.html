@@ -2,151 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GEN-AI_v2.0_ULTIMATE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Insights: Generative AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Y2K THEME ENGINE --- */
         :root {
-            --win-gray: #c0c0c0;
-            --win-blue: #000080;
-            --win-teal: #008080;
-            --neon-pink: #ff00ff;
-            --neon-green: #00ff00;
-            --border-light: #dfdfdf;
-            --border-dark: #808080;
-            --border-black: #000000;
+            --primary: #0062ff; /* IBM Blue */
+            --secondary: #161616;
+            --bg: #f4f4f4;
+            --card-bg: #ffffff;
+            --text-main: #393939;
+            --text-muted: #525252;
+            --border: #e0e0e0;
         }
 
         body {
-            background-color: var(--win-teal);
-            background-image: 
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 2px, 3px 100%;
-            font-family: "MS Sans Serif", "Tahoma", sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            color: black;
+            line-height: 1.6;
         }
 
-        /* Desktop Icons */
-        .desktop-icons {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .icon {
-            width: 50px;
-            text-align: center;
+        header {
+            background-color: var(--secondary);
             color: white;
-            font-size: 11px;
-            text-shadow: 1px 1px black;
-            cursor: pointer;
-        }
-
-        .icon-box {
-            width: 32px;
-            height: 32px;
-            background: var(--win-gray);
-            border: 2px outset white;
-            margin: 0 auto 5px;
-        }
-
-        /* Window Styling */
-        .window {
-            background: var(--win-gray);
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-black) var(--border-black) var(--border-light);
-            box-shadow: inset 1px 1px white, inset -1px -1px var(--border-dark);
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title-bar {
-            background: linear-gradient(90deg, var(--win-blue), #1084d0);
-            padding: 3px 5px;
+            padding: 2rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 13px;
         }
 
-        .title-btns span {
-            background: var(--win-gray);
-            border: 1px solid;
-            border-color: white var(--border-black) var(--border-black) white;
-            width: 14px;
-            height: 14px;
+        .container {
+            width: 80%;
+            margin: 3rem auto;
+        }
+
+        .hero-section {
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Corporate Card Style */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary);
             display: inline-block;
-            color: black;
-            text-align: center;
-            line-height: 12px;
-            margin-left: 2px;
-            font-size: 10px;
+            margin-bottom: 1rem;
         }
 
-        .content {
-            padding: 10px;
-            overflow-y: auto;
-            flex-grow: 1;
-            font-size: 12px;
-            background: white;
-            margin: 2px;
-            border: 2px inset var(--win-gray);
+        .card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
         }
 
-        h3 { 
-            background: #e0e0e0; 
-            padding: 2px; 
-            border-bottom: 1px solid black; 
-            margin: 0 0 10px 0;
-            font-size: 14px;
+        .card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            background: #e0eaff;
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
         }
 
-        .highlight { color: blue; font-weight: bold; }
-        .danger { color: red; font-weight: bold; }
-
-        /* Taskbar */
-        .taskbar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 30px;
-            background: var(--win-gray);
-            border-top: 2px solid white;
-            display: flex;
-            align-items: center;
-            padding: 2px;
-            box-sizing: border-box;
-            z-index: 1000;
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            background: white;
         }
 
-        .start-btn {
-            background: var(--win-gray);
-            border: 2px outset white;
-            padding: 2px 8px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .cite-tag { color: var(--primary); font-size: 0.85rem; font-weight: bold; }
+    </style>
+</head>
+<body>
 
-        .tray {
-            margin-left: auto;
-            border: 2px inset white;
-            padding: 2px 10px;
-            font-size: 12px;
-        }
+<header>
+    <div style="font-weight: 700; font-size: 1.2rem;">GEN-AI STRATEGY</div>
+    <div style="font-size: 0.9rem; opacity: 0.8;">Q1 2026 Executive Summary</div>
+</header>
 
-        marquee {
-            position: fixed;
-            top: 0;
-            background: black;
+<div class="container">
+    <div class="hero-section">
+        <span class="badge">Market Overview</span>
+        <h1>The Generative Revolution</h1>
+        <p>Generative AI refers to techniques capable of synthesizing new, meaningful content—text, images, or audio—from learned training data <span class="cite-tag"></span>. While traditional AI was primarily <strong>analytic</strong> (focused on decision-making), GenAI shifts the focus toward <strong>creative</strong> synthesis <span class="cite-tag"></span>.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Mathematical Core</h3>
+            <p>Unlike discriminative models that learn boundaries to classify data, generative models infer actual data distributions to create synthetic samples <span class="cite-tag"></span>.</p>
+            <ul>
+                <li><strong>Transformers:</strong> Utilize self-attention to process entire sequences simultaneously <span class="cite-tag"></span>.</li>
+                <li><strong>GANs:</strong> A zero-sum game between a generator and a discriminator <span class="cite-tag"></span>.</li>
+                <li><strong>Diffusion:</strong> Reverses a noise-diffusion process to generate images <span class="cite-tag"></span>.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Operational Framework</h3>
+            <p>Successful implementation requires a socio-technical view across three distinct layers <span class="cite-tag"></span>:</p>
+            <ul>
+                <li><strong>Model Level:</strong> Architectures like GPT-4 or Stable Diffusion <span class="cite-tag"></span>.</li>
+                <li><strong>System Level:</strong> The infrastructure, interfaces, and bots (e.g., ChatGPT) <span class="cite-tag"></span>.</li>
+                <li><strong>Application Level:</strong> Use cases like SEO generation or code synthesis <span class="cite-tag"></span>.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Risk Management</h3>
+            <p>Implementation involves managing critical vulnerabilities inherent in probabilistic systems <span class="cite-tag"></span>:</p>
+            <ul>
+                <li><strong>Hallucination:</strong> Plausible but factually incorrect outputs <span class="cite-tag"></span>.</li>
+                <li><strong>Bias:</strong> Amplification of toxic language or human stereotypes <span class="cite-tag"></span>.</li>
+                <li><strong>Environment:</strong> Training models like GPT-3 produces ~552 t of CO2 <span class="cite-tag"></span>.</li>
+                <li><strong>Legal:</strong> Potential copyright and trademark violations <span class="cite-tag"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem; background: #fff; border: 1px solid var(--border); padding: 2rem;">
+        <h2 style="margin-top:0">The Socio-Technical Shift</h2>
+        <p>Current research indicates a fundamental transition in human-AI interaction. We are moving from a <strong>delegation pattern</strong> (task management) to a <strong>co-creation pattern</strong>, where AI acts as a collaborative agent in the design process <span class="cite-tag"></span>. In the long term, enterprise systems will evolve into dynamic process guidance systems powered by massive, organizational-specific language models <span class="cite-tag"></span>.</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Enterprise Intelligence Group. Based on Feuerriegel et al. (2023) and IBM Think Topics.
+</footer>
+
+</body>
+</html>
