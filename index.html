@@ -2,100 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>G3N_A1_D3SKTOP // Y2K Edition</title>
+    <title>GEN-AI_v2.0_ULTIMATE</title>
     <style>
+        /* --- Y2K THEME ENGINE --- */
         :root {
-            --pink: #ff00ff;
-            --blue: #00ffff;
-            --green: #00ff00;
-            --bg: #000080;
-            --window: #c0c0c0;
-            --border-light: #ffffff;
+            --win-gray: #c0c0c0;
+            --win-blue: #000080;
+            --win-teal: #008080;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff00;
+            --border-light: #dfdfdf;
             --border-dark: #808080;
+            --border-black: #000000;
         }
 
         body {
-            background: linear-gradient(45deg, #ff00ff, #00ffff, #000080);
-            background-attachment: fixed;
-            font-family: "Courier New", Courier, monospace;
-            color: black;
+            background-color: var(--win-teal);
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            font-family: "MS Sans Serif", "Tahoma", sans-serif;
             margin: 0;
-            overflow: hidden;
             height: 100vh;
+            overflow: hidden;
+            color: black;
         }
 
-        /* Scrolling Marquee Header */
-        .marquee {
-            background: black;
-            color: var(--green);
-            padding: 5px;
-            font-weight: bold;
-            border-bottom: 2px solid var(--pink);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-
-        /* Desktop Container */
-        #desktop {
-            padding: 50px 20px;
+        /* Desktop Icons */
+        .desktop-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 20px;
-            justify-content: center;
         }
 
-        /* Y2K Window Style */
+        .icon {
+            width: 50px;
+            text-align: center;
+            color: white;
+            font-size: 11px;
+            text-shadow: 1px 1px black;
+            cursor: pointer;
+        }
+
+        .icon-box {
+            width: 32px;
+            height: 32px;
+            background: var(--win-gray);
+            border: 2px outset white;
+            margin: 0 auto 5px;
+        }
+
+        /* Window Styling */
         .window {
-            background: var(--window);
+            background: var(--win-gray);
             border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            width: 400px;
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
+            border-color: var(--border-light) var(--border-black) var(--border-black) var(--border-light);
+            box-shadow: inset 1px 1px white, inset -1px -1px var(--border-dark);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
         }
 
         .title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
+            background: linear-gradient(90deg, var(--win-blue), #1084d0);
             padding: 3px 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
-            font-size: 12px;
             font-weight: bold;
+            font-size: 13px;
         }
 
-        .title-bar .buttons span {
-            display: inline-block;
+        .title-btns span {
+            background: var(--win-gray);
+            border: 1px solid;
+            border-color: white var(--border-black) var(--border-black) white;
             width: 14px;
             height: 14px;
-            background: var(--window);
-            border: 1px solid;
-            border-color: white black black white;
+            display: inline-block;
             color: black;
             text-align: center;
             line-height: 12px;
             margin-left: 2px;
-            cursor: pointer;
+            font-size: 10px;
         }
 
         .content {
             padding: 10px;
-            font-size: 13px;
-            line-height: 1.4;
-            max-height: 300px;
             overflow-y: auto;
+            flex-grow: 1;
+            font-size: 12px;
+            background: white;
+            margin: 2px;
+            border: 2px inset var(--win-gray);
         }
 
-        h2 { font-size: 16px; color: #000080; text-transform: uppercase; margin-top: 0; }
-        
-        .glow-text {
-            color: var(--pink);
-            text-shadow: 1px 1px var(--blue);
-            font-weight: bold;
+        h3 { 
+            background: #e0e0e0; 
+            padding: 2px; 
+            border-bottom: 1px solid black; 
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            text-transform: uppercase;
         }
+
+        .highlight { color: blue; font-weight: bold; }
+        .danger { color: red; font-weight: bold; }
 
         /* Taskbar */
         .taskbar {
@@ -103,93 +120,33 @@
             bottom: 0;
             width: 100%;
             height: 30px;
-            background: var(--window);
+            background: var(--win-gray);
             border-top: 2px solid white;
             display: flex;
             align-items: center;
-            padding: 0 5px;
-            z-index: 100;
+            padding: 2px;
+            box-sizing: border-box;
+            z-index: 1000;
         }
 
         .start-btn {
-            background: var(--window);
-            border: 2px solid;
-            border-color: white black black white;
-            padding: 2px 10px;
+            background: var(--win-gray);
+            border: 2px outset white;
+            padding: 2px 8px;
             font-weight: bold;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
-        /* Icons */
-        .icon { width: 32px; height: 32px; background: var(--blue); margin-bottom: 5px; border: 1px solid black; }
+        .tray {
+            margin-left: auto;
+            border: 2px inset white;
+            padding: 2px 10px;
+            font-size: 12px;
+        }
 
-    </style>
-</head>
-<body>
-
-<div class="marquee">
-    <marquee>*** GENERATIVE AI: REVOLUTIONIZING THE BISE COMMUNITY *** STATUS: ONLINE *** VERSION 2000.1 ***</marquee>
-</div>
-
-<div id="desktop">
-
-    <div class="window">
-        <div class="title-bar">
-            <span>CORE_DEFINITION.EXE</span>
-            <div class="buttons"><span>_</span><span>[ ]</span><span>X</span></div>
-        </div>
-        <div class="content">
-            <h2>What is Generative AI?</h2>
-            <p>Generative AI refers to computational techniques capable of generating <span class="glow-text">seemingly new, meaningful content</span> such as text, images, or audio from training data[cite: 8].</p>
-            <p>It is shifting the paradigm from purely analytic AI (decision-making) to creative AI (content creation)[cite: 88, 89].</p>
-        </div>
-    </div>
-
-    <div class="window">
-        <div class="title-bar">
-            <span>SYSTEM_HIERARCHY.HLP</span>
-            <div class="buttons"><span>_</span><span>[ ]</span><span>X</span></div>
-        </div>
-        <div class="content">
-            <h2>The Three Levels</h2>
-            <ul>
-                <li><strong>Model Level:</strong> Machine learning architectures (e.g., Transformers, GANs) that create novel data[cite: 33, 63].</li>
-                <li><strong>System Level:</strong> The infrastructure and interface (e.g., ChatGPT, Midjourney) providing user interaction[cite: 53, 57].</li>
-                <li><strong>Application Level:</strong> Practical use cases solving business problems like SEO or code generation[cite: 76, 78].</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="window" style="border-color: var(--pink);">
-        <div class="title-bar" style="background: red;">
-            <span>WARNING_CRITICAL_ERR.TXT</span>
-            <div class="buttons"><span>_</span><span>[ ]</span><span>X</span></div>
-        </div>
-        <div class="content">
-            <h2>Limitations & Risks</h2>
-            <p class="glow-text">!!! SYSTEM VULNERABILITIES DETECTED !!!</p>
-            <ul>
-                <li><strong>Hallucinations:</strong> Models produce plausible but nonsensical or incorrect facts[cite: 120].</li>
-                <li><strong>Bias:</strong> Training on human data can replicate toxic stereotypes[cite: 131, 132].</li>
-                <li><strong>Environment:</strong> Massive energy consumption (e.g., GPT-3 training emitted 552t of CO2)[cite: 150, 151].</li>
-                <li><strong>Copyright:</strong> Potential legal violations by reproducing protected works[cite: 142, 143].</li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-<div class="taskbar">
-    <div class="start-btn">
-        <div style="width:12px; height:12px; background:blue;"></div> 
-        START
-    </div>
-    <div style="margin-left: 10px; font-size: 10px; border: 1px inset; padding: 2px;">
-        16:20 PM
-    </div>
-</div>
-
-</body>
-</html>
+        marquee {
+            position: fixed;
+            top: 0;
+            background: black;
